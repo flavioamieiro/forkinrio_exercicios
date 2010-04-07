@@ -79,6 +79,17 @@ def calculate_with_values(dicionario):
 
     return soma, media, variacao
 
+
+def inverte_palavras(frase):
+    """
+    Dada uma frase, retorna outra com as letras das palavras invertidas
+
+    >>> inverte_palavras('python para desenvolvedores')
+    'nohtyp arap serodevlovnesed'
+    """
+    return ' '.join([palavra[::-1] for palavra in frase.split()])
+
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
