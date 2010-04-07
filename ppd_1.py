@@ -2,12 +2,6 @@
 #-*- coding: utf-8 -*-
 """
 Exercícios da primeira parte do livro Python para desenvolvedores
-
->>> celsius_para_fahrenheit(25)
-77.0
-
->>> fahrenheit_para_celsius(122)
-50.0
 """
 import math
 
