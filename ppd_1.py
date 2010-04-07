@@ -46,6 +46,20 @@ def is_prime(n):
                 return False
         return True
 
+def concatena_listas(lista_de_listas):
+    """
+    Recebe uma lista de listas e retorna uma única lista
+
+    >>> concatena_listas([[1, 2, 3], [4, 5, 6]])
+    [1, 2, 3, 4, 5, 6]
+
+    aceita listas de tamanhos arbitrários:
+
+    >>> concatena_listas([[1, 2], [3, 4, 5, 6]])
+    [1, 2, 3, 4, 5, 6]
+    """
+    return reduce(lambda x, y: x + y, lista_de_listas)
+
 
 if __name__ == '__main__':
     import doctest
