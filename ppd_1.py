@@ -61,6 +61,24 @@ def concatena_listas(lista_de_listas):
     return reduce(lambda x, y: x + y, lista_de_listas)
 
 
+def calculate_with_values(dicionario):
+    """
+    Dado um dicionário, retorna a soma, média e variação dos valores
+    (entendi variação como a diferença entre o menor e o maior elemento)
+
+    >>> calculate_with_values({'a': 1, 'b': 2, 'c': 3})
+    (6, 2, 2)
+
+    >>> calculate_with_values({'a': 10, 'b': 32.5, 'c': 23, 'd': 41})
+    (106.5, 26.625, 31)
+    """
+    lista_de_valores = dicionario.values()
+    soma = sum(lista_de_valores)
+    media = soma / len(lista_de_valores)
+    variacao = max(lista_de_valores) - min(lista_de_valores)
+
+    return soma, media, variacao
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
