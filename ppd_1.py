@@ -4,6 +4,7 @@
 Exercícios da primeira parte do livro Python para desenvolvedores
 """
 import math
+import operator
 
 def celsius_para_fahrenheit(graus_celcius):
     """
@@ -58,7 +59,7 @@ def concatena_listas(lista_de_listas):
     >>> concatena_listas([[1, 2], [3, 4, 5, 6]])
     [1, 2, 3, 4, 5, 6]
     """
-    return reduce(lambda x, y: x + y, lista_de_listas)
+    return reduce(operator.add, lista_de_listas)
 
 
 def calculate_with_values(dicionario):
