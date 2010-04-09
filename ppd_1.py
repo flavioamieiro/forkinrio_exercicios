@@ -6,6 +6,7 @@ Exercícios da primeira parte do livro Python para desenvolvedores
 import math
 import operator
 
+
 def celsius_para_fahrenheit(graus_celcius):
     """
     Função que converte temperatura em graus celcius para fahrenheit
@@ -47,6 +48,7 @@ def is_prime(n):
                 return False
         return True
 
+
 def concatena_listas(lista_de_listas):
     """
     Recebe uma lista de listas e retorna uma única lista
@@ -87,6 +89,15 @@ def inverte_palavras(frase):
 
     >>> inverte_palavras('python para desenvolvedores')
     'nohtyp arap serodevlovnesed'
+
+    O funcionamento do slicing [::-1] está explicado em
+    http://docs.python.org/release/2.3/whatsnew/section-slices.html
+
+    Basicamente, a sintaxe de slice aceita três parâmetros:
+    início, fim, e passo.
+    início por padrão é None, o passo também, enquanto fim é o final
+    da string. Assim, temos um slice do início ao fim da string com
+    passo -1 (ou seja, de trás para frente)
     """
     return ' '.join([palavra[::-1] for palavra in frase.split()])
 
