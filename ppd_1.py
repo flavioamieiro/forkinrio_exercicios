@@ -91,6 +91,26 @@ def inverte_palavras(frase):
     return ' '.join([palavra[::-1] for palavra in frase.split()])
 
 
+def ordena(dados, chave=0, reverso=False):
+    """
+    Ordena uma lista de tuplas dada uma chave
+
+    >>> ordena([(1, 2, 3), (2, 1, 3), (3, 2, 1)])
+    [(1, 2, 3), (2, 1, 3), (3, 2, 1)]
+
+    >>> ordena([(1, 2, 3), (2, 1, 3), (3, 2, 1)], 0, True)
+    [(3, 2, 1), (2, 1, 3), (1, 2, 3)]
+
+    >>> ordena([(1, 2, 3), (2, 1, 3), (2, 3, 1)], 1)
+    [(2, 1, 3), (1, 2, 3), (2, 3, 1)]
+
+    >>> ordena([(1, 2, 3), (2, 1, 3), (2, 3, 1)], 1, True)
+    [(2, 3, 1), (1, 2, 3), (2, 1, 3)]
+    """
+    dados.sort(cmp=lambda x, y: cmp(x[chave], y[chave]), reverse=reverso)
+    return dados
+
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
