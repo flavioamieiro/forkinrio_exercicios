@@ -3,7 +3,7 @@
 """
 Exercícios da primeira parte do livro Python para desenvolvedores
 """
-import math
+from math import ceil, sqrt
 import operator
 
 
@@ -36,13 +36,19 @@ def is_prime(n):
     e falso se n não for primo
     >>> is_prime(93)
     False
+
+    >>> is_prime(3)
+    True
+
+    >>> is_prime(49)
+    False
     """
     if n == 1:
         return False
     elif n == 2:
         return True
     else:
-        limit = int(math.sqrt(n))
+        limit = int(ceil(sqrt(n))) + 1
         for x in range(2, limit):
             if n % x == 0:
                 return False
