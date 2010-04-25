@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+import sys
 from math import ceil, sqrt
 from itertools import ifilterfalse, count
 
@@ -93,6 +95,30 @@ def rgb_xrange():
         for g in xrange(256):
             for b in xrange(256):
                 yield (r, g, b)
+
+def read_csv(file):
+    """
+    Lê um csv e retorna uma lista de tuplas, onde cada elemento é um campo do csv
+
+    >>> print read_csv('arquivo.csv')
+    [('1', '2', '3', '4'), ('favorite color', 'yellow')]
+
+    Imprime na tela alguma coisa e sai em caso de erro:
+    >>> read_csv('arquivo_que_nao_existe.csv')
+    Traceback (most recent call last):
+        ...
+    SystemExit: 1
+
+    """
+
+    try:
+        with open(file, 'r') as f:
+            lines = [l.strip() for l in f.readlines() if l.strip()]
+
+        return [tuple(l.split(',')) for l in lines]
+    except:
+        sys.stderr.write("Ops\n")
+        sys.exit(1)
 
 if __name__ == '__main__':
     import doctest
