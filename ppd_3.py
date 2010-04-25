@@ -82,6 +82,17 @@ def one_line_prime_generator():
         count(2)
     )
 
+def rgb_range():
+    for r in range(256):
+        for g in range(256):
+            for b in range(256):
+                yield (r, g, b)
+
+def rgb_xrange():
+    for r in xrange(256):
+        for g in xrange(256):
+            for b in xrange(256):
+                yield (r, g, b)
 
 if __name__ == '__main__':
     import doctest
