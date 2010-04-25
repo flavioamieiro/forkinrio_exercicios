@@ -1,4 +1,5 @@
 from math import ceil, sqrt
+from itertools import ifilterfalse, count
 
 
 def prime_generator():
@@ -8,8 +9,7 @@ def prime_generator():
     >>> g = prime_generator()
     >>> for i in range(25):
     ...     print g.next(),
-    2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 \
-59 61 67 71 73 79 83 89 97
+    2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
 
     it does not have a limit, so if you don't want
@@ -20,8 +20,7 @@ def prime_generator():
     ...     if i > 100:
     ...         break
     ...     print i,
-    2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 \
-59 61 67 71 73 79 83 89 97
+    2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
     """
 
     n = 1
@@ -41,6 +40,48 @@ def prime_generator():
             yield n
 
         n += 1
+
+def one_line_prime_generator():
+    """
+    An infinite prime numbers generator implemented in one line
+
+    >>> g = one_line_prime_generator()
+    >>> for i in range(25):
+    ...     print g.next(),
+    2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+
+
+    it does not have a limit, so if you don't want
+    an infinite loop, you have to explicitly break
+    out of your loop:
+
+    >>> for i in one_line_prime_generator():
+    ...     if i > 100:
+    ...         break
+    ...     print i,
+    2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+
+
+    O 100o primo deve ser 541
+    >>> g = one_line_prime_generator()
+    >>> for i in range(100):
+    ...     a = g.next()
+    >>> print a
+    541
+    """
+    # Esse filterfalse tira do generator os numeros que tem divisores
+    # maiores que 1
+    return ifilterfalse(
+        # Esse lambda retorna uma lista com os divisores maiores que 1
+        # do numero em questao (com caso especial para o 2)
+        lambda n:
+            False if n == 2 else [
+                x for x in range(2, int(ceil(sqrt(n)))+1) if n % x == 0
+            ]
+        ,
+        count(2)
+    )
+
 
 if __name__ == '__main__':
     import doctest
