@@ -46,6 +46,46 @@ class Lista(list):
         return resultado
 
 
+class Carro(object):
+    """
+    >>> siena = Carro(10)
+    >>> siena.combustivel
+    0
+    >>> siena.mover(10)
+    'Sem gasolina? Como?'
+    >>> siena.gasolina()
+    0
+    >>> siena.abastecer(2)
+    >>> siena.gasolina()
+    2
+    >>> siena.mover(10)
+    >>> siena.gasolina()
+    1
+    >>> siena.mover(200)
+    Traceback (most recent call last):
+    ...
+    ValueError: precisa de mais gasolina do que tem
+    """
+
+    def __init__(self, consumo):
+        self.consumo = consumo
+        self.combustivel = 0
+
+    def gasolina(self):
+        return self.combustivel
+
+    def abastecer(self, litros):
+        self.combustivel += litros
+
+    def mover(self, distancia):
+        litros_por_km = 1./self.consumo
+        if self.combustivel == 0:
+            return 'Sem gasolina? Como?'
+        elif litros_por_km * distancia > self.combustivel:
+            raise ValueError("precisa de mais gasolina do que tem")
+
+        self.combustivel -= int(litros_por_km * distancia)
+
 
 if __name__ == '__main__':
     import doctest
