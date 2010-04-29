@@ -100,11 +100,14 @@ def read_csv(file):
     """
     Lê um csv e retorna uma lista de tuplas, onde cada elemento é um campo do csv
 
-    >>> print read_csv('arquivo.csv')
-    [('1', '2', '3', '4'), ('favorite color', 'yellow')]
+    >>> for l in read_csv('arquivo.csv'):
+    ...     print l
+    ('1', '2', '3', '4')
+    ('favorite color', 'yellow')
 
     Imprime na tela alguma coisa e sai em caso de erro:
-    >>> read_csv('arquivo_que_nao_existe.csv')
+    >>> for i in read_csv('arquivo_que_nao_existe.csv'):
+    ...     pass
     Traceback (most recent call last):
         ...
     SystemExit: 1
@@ -115,7 +118,9 @@ def read_csv(file):
         with open(file, 'r') as f:
             lines = [l.strip() for l in f.readlines() if l.strip()]
 
-        return [tuple(l.split(',')) for l in lines]
+        for l in lines:
+            yield tuple(l.split(','))
+
     except:
         sys.stderr.write("Ops\n")
         sys.exit(1)
