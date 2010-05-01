@@ -87,6 +87,48 @@ class Carro(object):
         self.combustivel -= int(litros_por_km * distancia)
 
 
+class Vetor(object):
+    """
+    >>> v = Vetor(1, 1, 1)
+    >>> w = Vetor(2, 2, 2)
+
+    >>> v + w
+    <Vetor(3, 3, 3)>
+
+    >>> w - v
+    <Vetor(1, 1, 1)>
+
+    >>> v * w
+    6
+
+    >>> v * 2
+    Traceback (most recent call last):
+    ...
+    NotImplementedError
+    """
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __add__(self, other):
+        # O z entra no calculo da soma e da subtracao?
+        return Vetor(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    def __sub__(self, other):
+        # O z entra no calculo da soma e da subtracao?
+        return Vetor(self.x - other.x, self.y - other.y, self.z - other.z)
+
+    def __mul__(self, other):
+        if isinstance(other, self.__class__):
+            return self.x * other.x + self.y * other.y + self.z * other.z
+        else:
+            raise NotImplementedError
+
+    def __repr__(self):
+        return u'<Vetor(%s, %s, %s)>' % (self.x, self.y, self.z)
+
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
